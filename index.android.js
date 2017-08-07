@@ -6,22 +6,24 @@
 
 import React, { Component } from 'react';
 import {
-  AppRegistry, StyleSheet, Text, TextInput, View, TouchableOpacity, Dimensions
+  AppRegistry, StyleSheet, Text, TextInput, View, ToolbarAndroid, Image,TouchableHighlight, Dimensions,
 } from 'react-native';
 
 export default class FauziAzmiFirstApp extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { text: '' };
-   }
-
   render() {
 
+    //let judul='React Native';
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>
-          REPORT AN INCIDENT
-        </Text>
+      <ToolbarAndroid
+                navIcon={require('./images/back_arrow.png')}
+                title='REPORT AN INCIDENT'
+
+
+                          //onIconClicked={() => this.props.navigator.pop()}
+                style={styles.toolbar}
+                titleColor='white'
+              />
         <TextInput
           style={styles.form}
              placeholder = "Machine Type"
@@ -53,12 +55,11 @@ export default class FauziAzmiFirstApp extends Component {
                         placeholder = "PIC Email"
                         underlineColorAndroid = "transparent"
          />
-
-         <TouchableOpacity>
-                     <Text style = {styles.button}>
-                        Submit
-                     </Text>
-         </TouchableOpacity>
+         <View style={styles.submitButton}>
+                  <TouchableHighlight>
+                     <Text style={styles.submitButtonText}>Submit</Text>
+                  </TouchableHighlight>
+               </View>
 
       </View>
     );
@@ -67,40 +68,52 @@ export default class FauziAzmiFirstApp extends Component {
 
 const styles = StyleSheet.create({
   container: {
+    //flex: 1,
+    //justifyContent: 'center',
+    //alignItems: 'center',
+    //position: 'absolute',
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'whitesmoke',
+    //flexDirection:'column',
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
+  toolbar: {
+        //flexDirection:'column',
+        //alignItems:'center',
+        height: 56,
+      backgroundColor: '#4883da',
+    },
   form: {
-    height: 40,
-    margin: 5,
-    width: 300,
-    borderColor: 'gray',
-    borderWidth: 1,
+    height: 60,
+    //margin: 5,
+    marginTop: 10,
+    marginRight: 10,
+    marginLeft: 10,
+    width: Dimensions.get('window').width - 20,
+    //borderColor: 'gray',
+    //borderWidth: 1,
     backgroundColor: 'white',
     borderRadius: 4,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-  button: {
-    color: 'white',
-    //alignSelf: 'stretch',
-    //textAlign: 'center',
-    //flex: 0.1,
-    borderWidth: 1,
-    borderColor: 'black',
-    backgroundColor: 'skyblue',
-
-  }
+  submitButton: {
+     position:'absolute',
+     bottom: 0,
+     height:60,
+     width: Dimensions.get('window').width,
+     backgroundColor:'skyblue',
+     justifyContent:'center',
+     alignItems: 'center',
+   },
+   submitButtonText: {
+   fontSize: 18,
+   color: 'white',
+   textAlign: 'center'
+   }
 });
 
 AppRegistry.registerComponent('FauziAzmiFirstApp', () => FauziAzmiFirstApp);
+
+
+
+
+
+
